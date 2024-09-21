@@ -1,50 +1,80 @@
-# Welcome to your Expo app 👋
+# Projeto TP3 EXPO
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+## 💼 Conta de administrador padrão para acesso ao sistema.
+- **Login:** **admin@teste.com**
+- **Senha:** **123456**
 
-## Get started
+## 📋 Funcionalidades
 
-1. Install dependencies
+- **Cadastro e Login**: Permite que os usuários se cadastrem e façam login usando o Firebase Authentication.
+- **Edição de Perfil**: Os usuários podem atualizar suas informações de perfil, incluindo foto e dados pessoais.
+- **Gerenciamento de Itens de Lista**: Os usuários podem criar, editar e remover itens de uma lista, com suporte para upload de até 5 imagens.
+- **Funcionalidade Offline**: O aplicativo permite que os usuários interajam com seus dados mesmo sem conexão à internet, sincronizando automaticamente quando a conexão é restabelecida.
+- **Troca de Tema**: Os usuários podem escolher entre temas claro, escuro ou automático.
+- **Interface Atraente**: Utiliza componentes do React Native Paper para criar uma interface amigável e moderna.
 
+## 🚀 Tecnologias Utilizadas
+
+- **React Native**: Framework para construção de aplicativos móveis.
+- **Firebase**: Plataforma para autenticação, armazenamento e banco de dados em tempo real.
+- **React Native Paper**: Biblioteca de componentes que seguem as diretrizes do Material Design.
+- **Expo**: Ferramenta para desenvolvimento e publicação de aplicativos React Native.
+
+## ⚙️ Configuração do Firebase
+
+Para que o projeto funcione corretamente, você precisa configurar o Firebase no projeto. Siga os passos abaixo:
+
+1. Crie um projeto no [Firebase Console](https://console.firebase.google.com/).
+2. Habilite o Firestore Database e o Authentication no seu projeto Firebase.
+3. Crie um arquivo `firebase.js` dentro da pasta `src/services/` com o seguinte conteúdo:
+
+```javascript
+import { initializeApp } from 'firebase/app';
+import { getAuth } from 'firebase/auth';
+import { getFirestore } from 'firebase/firestore';
+
+const firebaseConfig = {
+  apiKey: "SUA_API_KEY",
+  authDomain: "SEU_AUTH_DOMAIN",
+  projectId: "SEU_PROJECT_ID",
+  storageBucket: "SEU_STORAGE_BUCKET",
+  messagingSenderId: "SEU_MESSAGING_SENDER_ID",
+  appId: "SEU_APP_ID",
+};
+
+const app = initializeApp(firebaseConfig);
+
+export const auth = getAuth(app);
+export const db = getFirestore(app);
+```
+
+## 🛠️ Como Rodar o Projeto
+
+Para rodar o projeto localmente, siga as etapas abaixo:
+
+1. Clone o repositório:
+   ```bash
+   git clone https://github.com/Marcus-Boni/Development-React-Native-AT.git
+   ```
+2. Naveque até o diretório do projeto
+   ```bash
+   cd seu-projeto
+   ```
+3. Instale as dependências:
    ```bash
    npm install
    ```
-
-2. Start the app
-
+4. Execute o projeto:
    ```bash
-    npx expo start
+   npm start
    ```
+5. O projeto estará disponível em http://localhost:8081.
 
-In the output, you'll find options to open the app in a
+## 📚 Documentação
 
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
+- Para mais detalhes sobre como usar e configurar o projeto, consulte a documentação oficial do <a href="https://console.firebase.google.com/u/0/?hl=pt-br" target="_blank">Firebase</a>.
 
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
+## 🤝 Contribuição
 
-## Get a fresh project
+- Sinta-se à vontade para contribuir com o projeto através de pull requests ou abrindo issues.
 
-When you're ready, run:
-
-```bash
-npm run reset-project
-```
-
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
-
-## Learn more
-
-To learn more about developing your project with Expo, look at the following resources:
-
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
-
-## Join the community
-
-Join our community of developers creating universal apps.
-
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
