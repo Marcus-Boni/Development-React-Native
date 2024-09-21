@@ -88,6 +88,18 @@ export default function TabLayout() {
         }}
       />
       <Tabs.Screen
+        name="ProfileGallery"
+        options={{
+          title: 'Profile Gallery',
+          tabBarIcon: ({ color, focused }) => (
+            <TabBarIcon
+              name={focused ? 'accessibility' : 'accessibility-outline'}
+              color={color}
+            />
+          )
+        }}
+      />
+      <Tabs.Screen
         name="Settings"
         options={{
           title: 'Settings',

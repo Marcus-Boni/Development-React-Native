@@ -1,26 +1,40 @@
 import React from 'react';
-import { View, Text, StyleSheet } from 'react-native';
-import { Surface } from 'react-native-paper';
+import { View, StyleSheet } from 'react-native';
+import { RadioButton, Text } from 'react-native-paper';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import { useThemeContext } from '@/context/ThemeContext';
 
 const Settings: React.FC = () => {
+  const { theme, setTheme } = useThemeContext();
+
+  const handleThemeChange = async (newTheme: string) => {
+    const theme = newTheme as 'light' | 'dark' | 'system';
+    setTheme(theme);
+    await AsyncStorage.setItem('theme', theme); 
+  };
+
   return (
-    <Surface style={styles.container}>
-      <Text style={styles.title}>Settings</Text>
-    </Surface>
+    <View style={styles.container}>
+      <Text style={styles.title}>Escolha o Tema</Text>
+      <RadioButton.Group onValueChange={handleThemeChange} value={theme}>
+        <RadioButton.Item label="Padrão do Sistema" value="system" />
+        <RadioButton.Item label="Claro" value="light" />
+        <RadioButton.Item label="Escuro" value="dark" />
+      </RadioButton.Group>
+    </View>
   );
 };
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    padding: 16,
+    padding: 20,
+    justifyContent: 'center'
   },
   title: {
-    fontSize: 24,
-    marginBottom: 16,
-  },
+    fontSize: 20,
+    marginBottom: 20
+  }
 });
 
 export default Settings;
